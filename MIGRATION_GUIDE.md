@@ -67,5 +67,5 @@ In this version Apigen has been updated to be autoconfigured when imported as de
     </plugin>
     ```
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...HEAD
+[unreleased]: https://github.com/apiaddicts/apigen/compare/v0.0.3...develop
 [0.0.3]: https://github.com/apiaddicts/apigen/releases/tag/v0.0.3

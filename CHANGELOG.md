@@ -26,5 +26,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial functional version of Apigen
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...HEAD
+[unreleased]: https://github.com/apiaddicts/apigen/compare/v0.0.3...develop
 [0.0.3]: https://github.com/apiaddicts/apigen/releases/tag/v0.0.3
