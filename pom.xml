@@ -60,10 +60,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <javapoet.version>1.13.0</javapoet.version>
-        <maven-model.version>3.6.3</maven-model.version>
-        <commons-io.version>2.7</commons-io.version>
+        <maven-model.version>3.8.1</maven-model.version>
+        <commons-io.version>2.11.0</commons-io.version>
         <springfox.version>2.9.2</springfox.version>
-        <swagger-parser.version>2.0.21</swagger-parser.version>
+        <swagger-parser.version>2.0.27</swagger-parser.version>
         <beanutils.version>1.9.4</beanutils.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <mapstruct-binding.version>0.2.0</mapstruct-binding.version>
