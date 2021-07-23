@@ -5,6 +5,7 @@ All changes required to migrate generated Apigen projects to new versions will b
 ## From [0.0.3] to [unreleased]
 
 In this version Apigen has been updated to be autoconfigured when imported as dependency rather than be the parent of the generated project.
+New dependencies has been added to increase the correct sync between the code and the openapi spec.
 
 - Modify the parent of you project to be the official Spring Boot parent
 - Add the following properties in the `pom.xml`
@@ -66,6 +67,13 @@ In this version Apigen has been updated to be autoconfigured when imported as de
         </configuration>
     </plugin>
     ```
+- Add the following properties
+  - `apigen.openapi.validation.enabled` (true/false): Enables the automatic validation against openapi spec file
+  - `apigen.openapi.validation.request.enabled` (true/false): Enables request validation against spec
+  - `apigen.openapi.validation.response.enabled` (true/false): Enables response validation against spec
+  - `apigen.openapi.validation.resource` (true/false): Defines the route of the openapi spec file (example: `classpath:static/api.yaml`)
+
+- Error codes are now of type string
 
 [unreleased]: https://github.com/apiaddicts/apigen/compare/v0.0.3...develop
 [0.0.3]: https://github.com/apiaddicts/apigen/releases/tag/v0.0.3

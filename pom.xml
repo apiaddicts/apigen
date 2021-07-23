@@ -68,6 +68,7 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <mapstruct-binding.version>0.2.0</mapstruct-binding.version>
         <reflections.version>0.9.11</reflections.version>
+        <swagger-request-validator.version>2.18.1</swagger-request-validator.version>
 
         <sonar.maven.plugin.version>3.7.0.1746</sonar.maven.plugin.version>
         <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
@@ -152,6 +153,11 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-mapstruct-binding</artifactId>
                 <version>${mapstruct-binding.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atlassian.oai</groupId>
+                <artifactId>swagger-request-validator-springmvc</artifactId>
+                <version>${swagger-request-validator.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

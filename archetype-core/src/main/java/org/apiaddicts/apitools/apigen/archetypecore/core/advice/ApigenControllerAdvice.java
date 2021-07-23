@@ -1,5 +1,7 @@
 package org.apiaddicts.apitools.apigen.archetypecore.core.advice;
 
+import com.atlassian.oai.validator.springmvc.InvalidRequestException;
+import com.atlassian.oai.validator.springmvc.InvalidResponseException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import lombok.extern.slf4j.Slf4j;
@@ -353,6 +355,28 @@ public class ApigenControllerAdvice {
 			return new ResponseEntity<>(exception(ex), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(new ApiResponse().withResultErrors(errors(error)), HttpStatus.BAD_REQUEST);
+	}
+
+	@ResponseBody
+	@ExceptionHandler(InvalidRequestException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ApiResponse exception(InvalidRequestException ex) {
+		log.warn("Wrong request", ex);
+		List<ApiError> errors = ex.getValidationReport().getMessages().stream()
+				.map(m -> new ApiError(m.getKey(), m.getMessage(), null))
+				.collect(Collectors.toList());
+		return new ApiResponse().withResultErrors(errors);
+	}
+
+	@ResponseBody
+	@ExceptionHandler(InvalidResponseException.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ApiResponse exception(InvalidResponseException ex) {
+		log.error("Wrong response", ex);
+		List<ApiError> errors = ex.getValidationReport().getMessages().stream()
+				.map(m -> new ApiError(m.getKey(), m.getMessage(), null))
+				.collect(Collectors.toList());
+		return new ApiResponse().withResultErrors(errors);
 	}
 
 	@ResponseBody

@@ -40,6 +40,10 @@ public class PropertiesGenerator {
         add("spring.web.resources.add-mappings", "false", p);
         add("management.endpoints.enabled-by-default", "false", p);
         add("management.endpoint.health.enabled", "true", p);
+        add("apigen.openapi.validation.enabled", "true", p);
+        add("apigen.openapi.validation.request.enabled", "true", p);
+        add("apigen.openapi.validation.response.enabled", "true", p);
+        add("apigen.openapi.validation.resource", "classpath:static/api.yaml", p);
         return p.toString();
     }
 

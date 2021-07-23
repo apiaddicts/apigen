@@ -26,7 +26,7 @@ class ExpandInterceptorTests {
 	void givenExplicitAllowedExpand_whenUseOtherExpand_thenError() throws Exception {
 		mvc.perform(get("/expand/allowed?$expand=parent,children,other"))
 				.andExpect(jsonPath("$.result.errors.length()", is(1)))
-				.andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+				.andExpect(jsonPath("$.result.errors[0].code", is("1103")))
 				.andExpect(jsonPath("$.result.errors[0].element", is("other")))
 				.andExpect(status().is(400));
 	}
@@ -41,7 +41,7 @@ class ExpandInterceptorTests {
     void givenExplicitExcludedExpand_whenUseExcludedExpand_thenError() throws Exception {
         mvc.perform(get("/expand/excluded?$expand=invoice,details"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("invoice")))
                 .andExpect(status().is(400));
     }
@@ -56,7 +56,7 @@ class ExpandInterceptorTests {
     void givenExplicitExpandLevel_whenUseBiggerLevelExpand_thenError() throws Exception {
         mvc.perform(get("/expand/level?$expand=details,other,other.other"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("other.other")))
                 .andExpect(status().is(400));
     }
@@ -71,7 +71,7 @@ class ExpandInterceptorTests {
     void givenGenericExpandLevel_whenUseBiggerLevelExpand_thenError() throws Exception {
         mvc.perform(get("/expand/generic?$expand=details,other,other.other,parent.parent.parent"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("parent.parent.parent")))
                 .andExpect(status().is(400));
     }
@@ -116,7 +116,7 @@ class ExpandInterceptorTests {
     void givenAnnotationWithAllowed_whenUseNonAllowedParams_thenError() throws Exception {
         mvc.perform(get("/expand/annotation/allowed?$expand=one,other"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("other")))
                 .andExpect(status().is(400));
     }
@@ -131,7 +131,7 @@ class ExpandInterceptorTests {
     void givenAnnotationWithExcluded_whenUseExcludedParams_thenSuccess() throws Exception {
         mvc.perform(get("/expand/annotation/excluded?$expand=other,other.two,one"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("one")))
                 .andExpect(status().is(400));
     }
@@ -140,7 +140,7 @@ class ExpandInterceptorTests {
     void givenAnnotationWithExcluded_whenUseNonExcludedParamsWithBiggerLevelThanDefault_thenError() throws Exception {
         mvc.perform(get("/expand/annotation/excluded?$expand=other,other.two,other.two.three"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("other.two.three")))
                 .andExpect(status().is(400));
     }
@@ -149,7 +149,7 @@ class ExpandInterceptorTests {
     void givenAnnotationWithExcludedAndLevel_whenUseNonExcludedParamsWithBiggerLevel_thenError() throws Exception {
         mvc.perform(get("/expand/annotation/excluded-and-level?$expand=a,a.b.c,a.b.c.d"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("a.b.c.d")))
                 .andExpect(status().is(400));
     }
@@ -158,7 +158,7 @@ class ExpandInterceptorTests {
     void givenAnnotationWithLevel_whenUseParamsWithBiggerLevel_thenError() throws Exception {
         mvc.perform(get("/expand/annotation/level?$expand=a,a.b.c,a.b.c.d"))
                 .andExpect(jsonPath("$.result.errors.length()", is(1)))
-                .andExpect(jsonPath("$.result.errors[0].code", is(1103)))
+                .andExpect(jsonPath("$.result.errors[0].code", is("1103")))
                 .andExpect(jsonPath("$.result.errors[0].element", is("a.b.c.d")))
                 .andExpect(status().is(400));
     }

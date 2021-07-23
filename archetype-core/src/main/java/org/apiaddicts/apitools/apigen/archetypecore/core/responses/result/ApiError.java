@@ -8,7 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApiError {
-    private Integer code;
+    private String code;
     private String message;
     private String element;
+
+    public ApiError(Integer code, String message, String element) {
+        this.code = code == null ? null : code.toString();
+        this.message = message;
+        this.element = element;
+    }
 }
